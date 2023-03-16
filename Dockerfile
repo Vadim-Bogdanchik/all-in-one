@@ -1,23 +1,40 @@
 # Use an official Node runtime as a parent image
 FROM node:lts-alpine
 
-# Set the working directory to /app
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files to the container
-COPY package*.json ./
+# Copy package.json and package-lock.json files for the first site to the container
+COPY site1/package*.json ./site1/
 
-# Install dependencies
-RUN npm install
+# Install dependencies for the first site
+RUN cd site1 && npm install
 
-# Copy the rest of the application code to the container
-COPY . .
+# Copy the source code for the first site to the container
+COPY site1/ ./site1/
 
-# Build the application
-RUN npm run build
+# Build the production version of the first site
+RUN cd site1 && npm run build
 
-# Expose the port that the application will run on
+# Copy package.json and package-lock.json files for the second site to the container
+COPY site2/package*.json ./site2/
+
+# Install dependencies for the second site
+RUN cd site2 && npm install
+
+# Copy the source code for the second site to the container
+COPY site2/ ./site2/
+
+# Build the production version of the second site
+RUN cd site2 && npm run build
+
+# Expose the ports that the sites will be served on
 EXPOSE 3000
+EXPOSE 3001
 
-# Start the application
-CMD ["npm", "start"]
+# Start the first site
+CMD ["npm", "run", "-C", "site1", "start"]
+
+# Start the second site
+CMD ["npm", "run", "-C", "site2", "start"]
+

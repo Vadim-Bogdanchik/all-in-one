@@ -1,9 +1,16 @@
 version: '3'
-
 services:
-  web:
-    build: .
-    command: npm start
+  site1:
+    build:
+      context: ./site1
+      dockerfile: Dockerfile
     ports:
       - '3000:3000'
-    restart: always
+    command: npm run start:site1
+  site2:
+    build:
+      context: ./site2
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3001'
+    command: npm run start:site2
