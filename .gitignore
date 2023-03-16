@@ -1,0 +1,10 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+/!Content
+/backend-blog-sanity
+/frontpage
+/react-app
+/my_website
+
+/site1/node_modules
+/site2/node_modules

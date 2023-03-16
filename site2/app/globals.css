@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg_hero {
+	@apply bg-[url('/images/herobg.jpg')] bg-center bg-cover bg-no-repeat bg-fixed;
+}
+.bg_header {
+	@apply bg-[url('/images/bghelp.jpg')] bg-center bg-cover bg-no-repeat bg-fixed;
+}
+.bg_help {
+	@apply bg-[url('/images/bghelp.png')] bg-center bg-cover bg-no-repeat bg-opacity-30;
+}
+.bg_footer {
+	@apply bg-[url('/images/bgfooter.jpg')] bg-center bg-cover bg-no-repeat bg-opacity-30;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.animate-gradient {
+	animation: gradient 10s ease infinite;
+	background-image: linear-gradient(-45deg, #ff0000, #ffff00, #ff0000);
+	background-size: 400% 400%;
+	background-clip: text;
+}
+.animate-gradient-help {
+	animation: gradient 10s ease infinite;
+	background-image: linear-gradient(-45deg, #58c98b, #5a85bc, #57ae9d);
+	background-size: 400% 400%;
+	background-clip: text;
+}
